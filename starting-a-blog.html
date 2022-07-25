@@ -4,8 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Dev Slush Pile - AC</title>
+        <title>Starting a blog</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="Setting up a Pelican blog" />
 </head>
 
 <body id="index" class="home">
@@ -13,13 +14,18 @@
                 <h1><a href="/">Dev Slush Pile</a></h1>
                 <nav><ul>
                     <li><a href="/category/notebooks.html">notebooks</a></li>
-                    <li><a href="/category/notes.html">notes</a></li>
+                    <li class="active"><a href="/category/notes.html">notes</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/starting-a-blog.html" rel="bookmark"
+           title="Permalink to Starting a blog">Starting a blog</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/starting-a-blog.html">Starting a blog</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2022-07-17T00:00:00-04:00">
                 Published: Sun 17 July 2022
@@ -30,10 +36,13 @@
         </address>
 <p>In <a href="/category/notes.html">notes</a>.</p>
 <p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/tutorials.html">tutorials</a> </p>
-</footer><!-- /.post-info --><p>I was inspired to finally start a blog after thinking of doing it for a few years by <a href="https://testandcode.com/191">this</a> episode in one of my favorite podcasts. One of the things that they discuss in that episode is that there are many reasons to have a blog (and many ways of blogging). My intention for this blog is to be a spot where I can keep notes about things I want to remember, useful tips &amp; tricks, and thinking about projects. </p>
+</footer><!-- /.post-info -->      <p>I was inspired to finally start a blog after thinking of doing it for a few years by <a href="https://testandcode.com/191">this</a> episode in one of my favorite podcasts. One of the things that they discuss in that episode is that there are many reasons to have a blog (and many ways of blogging). My intention for this blog is to be a spot where I can keep notes about things I want to remember, useful tips &amp; tricks, and thinking about projects. </p>
 <p>I used the project setup and static file publishing steps from <a href="https://justinnaldzin.github.io/create-a-website-using-github-pages-and-pelican.html">this Pelican tutorial</a>. I didn't use the theme section or the Jupyter Notebook section because neither worked quite right for me and I like the default theme. I didn't look into the theme support enough to know what else might need to be updated to work, but I did note that JINJA_EXTENSIONS should now be <code>JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}</code>. Also, I was able to skip adding any submodules to my repo by keeping the default theme and using a different approach to sharing notebooks.</p>
-<p>For notebook support, <a href="https://pypi.org/project/pelican-jupyter/">the pelican-jupyter package</a> was easy to setup. I'm using "markup mode", which involves adding a few lines to the <code>pelicanconf.py</code> file, and I'm using metadata files to describe the notebook instead of putting that information in a cell inside the notebook.  </p>                </article>
-            </aside><!-- /#featured -->
+<p>For notebook support, <a href="https://pypi.org/project/pelican-jupyter/">the pelican-jupyter package</a> was easy to setup. I'm using "markup mode", which involves adding a few lines to the <code>pelicanconf.py</code> file, and I'm using metadata files to describe the notebook instead of putting that information in a cell inside the notebook.  </p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
