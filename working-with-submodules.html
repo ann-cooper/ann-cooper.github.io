@@ -48,7 +48,7 @@ make publish
 <span class="nb">cd</span> output <span class="o">&amp;&amp;</span> git add -A . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&quot;</span><span class="nv">$lastcommit</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> git push origin main
 <span class="nb">cd</span> ..
 <span class="nb">echo</span> <span class="s2">&quot;pwd: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-git submodule update --recursive
+git submodule update --remote --merge
 <span class="nb">exit</span> <span class="m">0</span>
 </code></pre></div>
 
