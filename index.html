@@ -39,7 +39,12 @@
 <span class="nv">lastcommit</span><span class="o">=</span><span class="sb">`</span>git log -1 --oneline<span class="sb">`</span>
 <span class="nb">echo</span> <span class="s2">&quot;Last commit: </span><span class="si">${</span><span class="nv">lastcommit</span><span class="si">}</span><span class="s2"> ... now running make publish&quot;</span>
 make publish
-<span class="nb">cd</span> output <span class="o">&amp;&amp;</span> git add -A . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&quot;</span><span class="nv">$lastcommit</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> git push origin main
+<span class="nb">cd</span> output
+<span class="nb">echo</span> <span class="s2">&quot;In </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2"> with git status </span><span class="k">$(</span>git status<span class="k">)</span><span class="s2">&quot;</span>
+git add -A .
+git commit -m <span class="s2">&quot;</span><span class="si">${</span><span class="nv">lastcommit</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;git status </span><span class="k">$(</span>git status<span class="k">)</span><span class="s2">&quot;</span>
+git push origin main
 <span class="nb">cd</span> ..
 <span class="nb">echo</span> <span class="s2">&quot;pwd: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
 git submodule update --remote --merge
