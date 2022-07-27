@@ -4,51 +4,58 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>A Pelican Blog - notes</title>
-        <link rel="stylesheet" href="http://ann-cooper.github.io/theme/css/main.css" />
-        <link href="http://ann-cooper.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+        <title>Dev Slush Pile - notes</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="http://ann-cooper.github.io/">A Pelican Blog</a></h1>
+                <h1><a href="/">Dev Slush Pile</a></h1>
                 <nav><ul>
-                    <li class="active"><a href="http://ann-cooper.github.io/category/notes.html">notes</a></li>
+                    <li><a href="/category/notebooks.html">notebooks</a></li>
+                    <li class="active"><a href="/category/notes.html">notes</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://ann-cooper.github.io/working-with-submodules.html">Starting a blog</a></h1>
+                    <h1 class="entry-title"><a href="/working-with-submodules.html">Publishing posts to an output submodule</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2022-07-25T00:00:00+00:00">
-                Published: Mon 25 July 2022
+        <abbr class="published" title="2022-07-26T00:00:00-04:00">
+                Published: Tue 26 July 2022
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="http://ann-cooper.github.io/author/ac.html">AC</a>
+                By                         <a class="url fn" href="/author/ac.html">AC</a>
         </address>
-<p>In <a href="http://ann-cooper.github.io/category/notes.html">notes</a>.</p>
-<p>tags: <a href="http://ann-cooper.github.io/tag/pelican.html">pelican</a> <a href="http://ann-cooper.github.io/tag/tutorials.html">tutorials</a> </p>
-</footer><!-- /.post-info --><p>https://stackoverflow.com/questions/5814319/git-submodule-push
-https://stackoverflow.com/questions/10848191/git-submodule-commit-hooks
-https://dopeddude.medium.com/git-submodule-with-git-hooks-for-scalable-repos-50924f969937</p>
-<p>I'm okay with git -- that is, I interact with it on the command line, I know what's going on at a high level, and I can (if I brace myself) do an interactive rebase. I don't have a deep understanding of it, and I mostly do basic stuff with it. This is the first time I've tried to do much with submodules, so I've been looking into getting the output (a submodule) correctly pushed and updated when I'm pushing new posts to the superproject.</p>
+<p>In <a href="/category/notes.html">notes</a>.</p>
+<p>tags: <a href="/tag/submodules.html">submodules</a> </p>
+</footer><!-- /.post-info --><p>I'm okay with git -- that is, I interact with it on the command line, I know what's going on at a high level, and I can (if I brace myself) do an interactive rebase. I don't have a deep understanding of it, and I mostly do basic stuff with it. This is the first time I've tried to do much with submodules, so I've been looking into getting the output (a submodule) correctly pushed and updated when I'm pushing new posts to the superproject.</p>
 <p>One of the important parts of working with a submodule is that the submodule needs to be updated (<code>git add</code> and <code>git commit</code>) independently from the superproject. So, for example, if you're in the superproject and you do a <code>git add .</code>, it will not take care of adding the changes to the submodule, if there are any.</p>
 <p>In the superproject's <code>.git/hooks/pre-push</code></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;Starting pre-push&quot;</span>
-<span class="nv">lastcommit</span><span class="o">=</span><span class="sb">`</span>git log origin/main -1 --oneline<span class="sb">`</span>
+<span class="nv">lastcommit</span><span class="o">=</span><span class="sb">`</span>git log -1 --oneline<span class="sb">`</span>
 <span class="nb">echo</span> <span class="s2">&quot;Last commit: </span><span class="si">${</span><span class="nv">lastcommit</span><span class="si">}</span><span class="s2"> ... now running make publish&quot;</span>
 make publish
 <span class="nb">cd</span> output <span class="o">&amp;&amp;</span> git add -A . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&quot;</span><span class="nv">$lastcommit</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> git push origin main
-<span class="nb">echo</span> <span class="s2">&quot;Did the output directory get pushed?&quot;</span>
 <span class="nb">cd</span> ..
-<span class="nb">echo</span> <span class="s2">&quot;pwd: &#39;(pwd)&#39;&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;pwd: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
 git submodule update --recursive
 <span class="nb">exit</span> <span class="m">0</span>
-</code></pre></div>                </article>
+</code></pre></div>
+
+<ul>
+<li>Note re git log: <code>git log -1 --oneline</code> will get the current commit message that hasn't been pushed to main, while <code>git log origin/main -1 --oneline</code> will get the most recent commit message that has already been pushed to main.</li>
+</ul>
+<p>Now, I can do a workflow where I write a post in the superproject's <code>/content</code> directory, and do:</p>
+<div class="highlight"><pre><span></span><code>git add -A .
+git commit -m &#39;My message&#39;
+git push origin main
+</code></pre></div>
+
+<p>The <code>/output</code> directory gets updated and the output submodule gets pushed as part of the pre-push hook in the superproject.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -57,33 +64,40 @@ git submodule update --recursive
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="http://ann-cooper.github.io/starting-a-blog.html" rel="bookmark"
+                    <h1><a href="/starting-a-blog.html" rel="bookmark"
                            title="Permalink to Starting a blog">Starting a blog</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2022-07-17T00:00:00+00:00">
+        <abbr class="published" title="2022-07-17T00:00:00-04:00">
                 Published: Sun 17 July 2022
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="http://ann-cooper.github.io/author/ac.html">AC</a>
+                By                         <a class="url fn" href="/author/ac.html">AC</a>
         </address>
-<p>In <a href="http://ann-cooper.github.io/category/notes.html">notes</a>.</p>
-<p>tags: <a href="http://ann-cooper.github.io/tag/pelican.html">pelican</a> <a href="http://ann-cooper.github.io/tag/tutorials.html">tutorials</a> </p>
+<p>In <a href="/category/notes.html">notes</a>.</p>
+<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/tutorials.html">tutorials</a> </p>
 </footer><!-- /.post-info -->                <p>Setting up a Pelican blog</p>
-                <a class="readmore" href="http://ann-cooper.github.io/starting-a-blog.html">read more</a>
+                <a class="readmore" href="/starting-a-blog.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
                 </section><!-- /#content -->
         <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://kruxia.gitlab.io/goodtech-is/">Sean Harrison</a></li>
+                            <li><a href="https://www.caktusgroup.com/blog/">The Caktus Group</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
                 <div class="social">
                         <h2>social</h2>
                         <ul>
-                            <li><a href="http://ann-cooper.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
+                            <li><a href="#">Nothing here yet</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
