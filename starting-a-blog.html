@@ -5,58 +5,55 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
         <title>Starting a blog</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://ann-cooper.github.io/theme/css/main.css" />
+        <link href="http://ann-cooper.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
         <meta name="description" content="Setting up a Pelican blog" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">Dev Slush Pile</a></h1>
+                <h1><a href="http://ann-cooper.github.io/">A Pelican Blog</a></h1>
                 <nav><ul>
-                    <li><a href="/category/notebooks.html">notebooks</a></li>
-                    <li class="active"><a href="/category/notes.html">notes</a></li>
+                    <li class="active"><a href="http://ann-cooper.github.io/category/notes.html">notes</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/starting-a-blog.html" rel="bookmark"
+        <a href="http://ann-cooper.github.io/starting-a-blog.html" rel="bookmark"
            title="Permalink to Starting a blog">Starting a blog</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2022-07-17T00:00:00-04:00">
+        <abbr class="published" title="2022-07-17T00:00:00+00:00">
                 Published: Sun 17 July 2022
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="/author/ac.html">AC</a>
+                By                         <a class="url fn" href="http://ann-cooper.github.io/author/ac.html">AC</a>
         </address>
-<p>In <a href="/category/notes.html">notes</a>.</p>
-<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/tutorials.html">tutorials</a> </p>
+<p>In <a href="http://ann-cooper.github.io/category/notes.html">notes</a>.</p>
+<p>tags: <a href="http://ann-cooper.github.io/tag/pelican.html">pelican</a> <a href="http://ann-cooper.github.io/tag/tutorials.html">tutorials</a> </p>
 </footer><!-- /.post-info -->      <p>After thinking about starting a blog for a few years but not actually taking any steps toward it, I was inspired to finally give it a try by <a href="https://testandcode.com/191">this</a> episode in one of my favorite podcasts. One of the things that they discuss is that there are many reasons to have a blog and many ways of blogging, which spoke to me because one of my major hesitations was that I don't have a very focused topic and I don't want to go after any particular audience. My intention for this blog is to be a spot where I can keep notes about things I want to remember, projects, and useful tips &amp; tricks. </p>
 <p>I used the project setup and static file publishing steps from <a href="https://justinnaldzin.github.io/create-a-website-using-github-pages-and-pelican.html">this Pelican tutorial</a>. I didn't use the theme section or the Jupyter Notebook section because neither worked quite right for me (and I like the default theme). I didn't look into the theme support enough to know what else might need to be updated to work, but I did note that JINJA_EXTENSIONS should now be <code>JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}</code>. Also, I was able to skip adding any submodules to my repo by keeping the default theme and using a different approach to sharing notebooks.</p>
 <p>For notebook support, <a href="https://pypi.org/project/pelican-jupyter/">the pelican-jupyter package</a> was easy to setup. I'm using "markup mode", which involves adding a few lines to the <code>pelicanconf.py</code> file, and I'm using metadata files to describe the notebook instead of putting that information in a cell inside the notebook.  </p>
 <p>Here we go!</p>
+<p>Edit: </p>
+<p>The <code>pre-push.sh</code> didn't work how I thought it was meant to, so I changed it a little:
+    - <code>pre-push.sh</code> to just <code>pre-push</code>
+    - set as executable witn <code>chmod 766 .git/hooks/pre-push</code></p>
     </div><!-- /.entry-content -->
 
   </article>
 </section>
         <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="https://kruxia.gitlab.io/goodtech-is/">Sean Harrison</a></li>
-                            <li><a href="https://www.caktusgroup.com/blog/">The Caktus Group</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
                 <div class="social">
                         <h2>social</h2>
                         <ul>
+                            <li><a href="http://ann-cooper.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">Nothing here yet</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
