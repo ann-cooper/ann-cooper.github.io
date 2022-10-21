@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="Pelican" />
+        <title>Thinking about debugging</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="Ways to approach debugging" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Dev Slush Pile</a></h1>
+                <nav><ul>
+                    <li><a href="/category/notebooks.html">notebooks</a></li>
+                    <li class="active"><a href="/category/notes.html">notes</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/drafts/debugging-thinking.html" rel="bookmark"
+           title="Permalink to Thinking about debugging">Thinking about debugging</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-08-04T00:00:00-04:00">
+                Published: Thu 04 August 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/ac.html">AC</a>
+        </address>
+<p>In <a href="/category/notes.html">notes</a>.</p>
+<p>tags: <a href="/tag/debugging.html">debugging</a> <a href="/tag/notes.html">notes</a> <a href="/tag/techniques.html">techniques</a> </p>
+</footer><!-- /.post-info -->      <ol>
+<li>
+<p>Write down the problem as you understand 
+    Don't underestimate the power of communication! Writing helps to focus thinking: this is part of why I often used to find myself answering my own question as soon as I had typed it out in Slack to a colleague.</p>
+</li>
+<li>
+<p>Ask yourself: "How would I write this code if this were the behavior I wanted?"
+    I use this technique all the time, in my own projects and talking through projects at work. It doesn't always lead right to the problem, of course, but I've been surprised how often it helps me look in the right direction.</p>
+</li>
+<li>
+<p>Start narrowing down the boundaries of the problem: up to what point are things okay?
+    This is usually helpful when the problems are harder to find. The idea is to narrow down where the problem could be as you work. When you start investigating, the boundaries might encompass a whole process that involves several classes. As you continue to work, you can move your boundaries in as you prove to yourself where the code is still performing as expected. For example, if part of the code with a bug involves instantiating an object, you might start by checking that the attributes are all correct on instantiation, then the problem boundary can be moved to after that point in the code, which helps to ensure that you aren't spending time looking into something that's not a problem.</p>
+</li>
+<li>
+<p>Using the pdb
+    The built-in Python debugger is very useful. It requires no set up, no special settings in your code editor, and allows you to explore the state of the variables at any point in the code based on where you insert the breakpoint. The way to use it is to put <code>breakpoint()</code> in your code at the line where you want to check on the state of things, then run the script, call the method, run the test, etc., when it reaches the breakpoint, it will drop you into the pdb interactive shell, where you can explore things like:</p>
+<ul>
+<li>The local variables and their values as this point of the code with <code>locals()</code></li>
+<li>The values of any variable avaialable with pretty print, which is built-in: <code>pp my_var.__dict__</code></li>
+<li>Step through the code line by line with <code>n</code></li>
+<li>Run to the next breakpoint with <code>c</code></li>
+</ul>
+</li>
+</ol>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://kruxia.gitlab.io/goodtech-is/">Sean Harrison</a></li>
+                            <li><a href="https://www.caktusgroup.com/blog/">The Caktus Group</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">Nothing here yet</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
