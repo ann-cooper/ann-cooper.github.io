@@ -51,11 +51,21 @@
 </li>
 <li>
 <p>pdb  </p>
-<p>The built-in Python debugger is very useful. It requires no set up, no special settings in your code editor, and allows you to explore the state of the variables at any point in the code based on where you insert the breakpoint. The way to use it is to put <code>breakpoint()</code> in your code (for Python 3.7+) at the line where you want to check on the state of things, then run the script, call the method, run the test, etc., and when it reaches the breakpoint, it will drop you into the pdb interactive shell, where you can explore things like:
-- The local variables and their values as this point of the code with <code>locals()</code>
-- The values of any available variable with pretty print, which is built-in: <code>pp my_var.__dict__</code>
-- Step through the code line by line with <code>n</code>
-- Run to the next breakpoint with <code>c</code></p>
+<p>The built-in Python debugger is very useful. It requires no set up, no special settings in your code editor, and allows you to explore the state of the variables at any point in the code based on where you insert the breakpoint. The way to use it is to put <code>breakpoint()</code> in your code (for Python 3.7+) at the line where you want to check on the state of things, then run the script, call the method, run the test, etc., and when it reaches the breakpoint, it will drop you into the pdb interactive shell, where you can explore things like:</p>
+<ul>
+<li>
+<p>The local variables and their values as this point of the code with <code>locals()</code></p>
+</li>
+<li>
+<p>The values of any available variable with pretty print, which is built-in: <code>pp my_var.__dict__</code></p>
+</li>
+<li>
+<p>Step through the code line by line with <code>n</code></p>
+</li>
+<li>
+<p>Run to the next breakpoint with <code>c</code></p>
+</li>
+</ul>
 </li>
 </ol>
     </div><!-- /.entry-content -->
