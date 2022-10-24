@@ -14,7 +14,7 @@
                 <h1><a href="/">Dev Slush Pile</a></h1>
                 <nav><ul>
                     <li><a href="/category/notebooks.html">notebooks</a></li>
-                    <li class="active"><a href="/category/notes.html">notes</a></li>
+                    <li class="active"><a href="/category/posts.html">posts</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
@@ -34,7 +34,7 @@
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/ac.html">AC</a>
         </address>
-<p>In <a href="/category/notes.html">notes</a>.</p>
+<p>In <a href="/category/posts.html">posts</a>.</p>
 <p>tags: <a href="/tag/submodules.html">submodules</a> </p>
 </footer><!-- /.post-info -->      <p>I'm okay with git -- that is, I interact with it on the command line, I know what's going on at a high level, and I can (if I brace myself) do an interactive rebase. I don't have a deep understanding of it, and I mostly do basic stuff with it. This is the first time I've tried to do much with submodules, so I've been looking into getting the output (a submodule) correctly pushed and updated when I'm pushing new posts to the superproject.</p>
 <p>One of the important parts of working with a submodule is that the submodule needs to be updated (<code>git add</code> and <code>git commit</code>) independently from the superproject. So, for example, if you're in the superproject and you do a <code>git add .</code>, it will not take care of adding the changes to the submodule, if there are any.</p>
