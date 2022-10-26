@@ -39,6 +39,15 @@
 </footer><!-- /.post-info -->      <ul>
 <li>Sqlite, pathlib, and pytest fixtures</li>
 </ul>
+<h2>The relational database</h2>
+<h3>Sqlite</h3>
+<p>Good if you:
+- Can't spin up a docker-compose network
+- Have a simple use case</p>
+<p>Sqlite is just a file, which means that you can easily spin it up, populate it with your test data, and throw it away at the end of a session. You can use most of the same tools and techniques that you'd use with Postgres via Sqlalchemy, too.</p>
+<h2>The nosql database</h2>
+<h3>TinyDB</h3>
+<p>Is also just a file, so you can use it in situations where you can't or don't want to use docker-compose and a full mongodb instance.</p>
     </div><!-- /.entry-content -->
 
   </article>
