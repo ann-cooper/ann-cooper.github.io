@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Disposable test databases and loading test data</title>
+        <title>An Approach to Python Testing</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
-        <meta name="description" content="Short sqlite remindeers" />
+        <meta name="description" content="My favorite testing practices" />
 </head>
 
 <body id="index" class="home">
@@ -14,30 +14,31 @@
                 <h1><a href="/">Dev Slush Pile</a></h1>
                 <nav><ul>
                     <li><a href="/category/notebooks.html">notebooks</a></li>
-                    <li><a href="/category/posts.html">posts</a></li>
+                    <li class="active"><a href="/category/posts.html">posts</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="/drafts/sqlite-notes.html" rel="bookmark"
-           title="Permalink to Disposable test databases and loading test data">Disposable test databases and loading test data</a></h1>
+        <a href="/drafts/approach-to-testing.html" rel="bookmark"
+           title="Permalink to An Approach to Python Testing">An Approach to Python Testing</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2022-08-04T00:00:00-04:00">
-                Published: Thu 04 August 2022
+        <abbr class="published" title="2023-04-06T00:00:00-04:00">
+                Published: Thu 06 April 2023
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/ac.html">AC</a>
         </address>
-<p>In <a href="/category/notes.html">notes</a>.</p>
-<p>tags: <a href="/tag/db.html">db</a> <a href="/tag/sqlite.html">sqlite</a> <a href="/tag/notes.html">notes</a> </p>
-</footer><!-- /.post-info -->      <p>To enter sqlite shell: <code>sqlite3</code>
-To open an existing db: <code>.open filename</code></p>
+<p>In <a href="/category/posts.html">posts</a>.</p>
+<p>tags: <a href="/tag/testing.html">testing</a> </p>
+</footer><!-- /.post-info -->      <h1>TDD? Not really</h1>
+<p>I usually work in brand new code or in projects that are still very actively being developed, so it's normal for me to be in situations where we're figuring out exactly what to do and how to do it. I think of writing code as being similar (in some ways) to writing an article or a story: different people will naturally use different approaches to organize their work. </p>
+<p>What I mean by that is that some people are more inclined to outline and others are more inclined to discover their way through a project. Without additional context, I don't think either way is 'better'. I map strict TDD to an outlining approach and the way I tend to do things is closer to a discovery approach. Usually, I work out what I want to do and write a very simple first draft, then I start writing tests, and the tests show me some of the places I did things in a funky way, so I go back and clean those up so that I can test them (and so that my colleagues or myself will be able to understand the code more easily later).</p>
     </div><!-- /.entry-content -->
 
   </article>
