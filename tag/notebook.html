@@ -1147,9 +1147,20 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
  .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
- .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */</style><body><div class="cell border-box-sizing code_cell rendered">
+ .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */</style><body><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Setup">Setup<a class="anchor-link" href="#Setup">&#182;</a></h2><ul>
+<li>Create the People model to use for our demo table</li>
+<li>Connect to the demo sqlite db and create a session we can use for querying </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">declarative_base</span>
@@ -1158,7 +1169,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
 
-<span class="c1"># Set up: Create session and People table with the People model.</span>
 <span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Characters mentioned and their role in the puzzle.&quot;&quot;&quot;</span>
 
@@ -1188,23 +1198,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2024-03-25 07:49:19,517 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2024-03-25 07:49:19,518 INFO sqlalchemy.engine.Engine PRAGMA main.table_info(&#34;people&#34;)
-2024-03-25 07:49:19,518 INFO sqlalchemy.engine.Engine [raw sql] ()
-2024-03-25 07:49:19,519 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info(&#34;people&#34;)
-2024-03-25 07:49:19,519 INFO sqlalchemy.engine.Engine [raw sql] ()
-2024-03-25 07:49:19,520 INFO sqlalchemy.engine.Engine 
-CREATE TABLE people (
-	id INTEGER NOT NULL, 
-	name VARCHAR NOT NULL, 
-	role VARCHAR, 
-	PRIMARY KEY (id), 
-	UNIQUE (name)
-)
-
-
-2024-03-25 07:49:19,520 INFO sqlalchemy.engine.Engine [no key 0.00030s] ()
-2024-03-25 07:49:19,521 INFO sqlalchemy.engine.Engine COMMIT
+<pre>2024-03-25 17:10:01,296 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-03-25 17:10:01,296 INFO sqlalchemy.engine.Engine PRAGMA main.table_info(&#34;people&#34;)
+2024-03-25 17:10:01,297 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-03-25 17:10:01,297 INFO sqlalchemy.engine.Engine COMMIT
 </pre>
 </div>
 </div>
@@ -1213,9 +1210,19 @@ CREATE TABLE people (
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Add-records-to-the-People-table">Add records to the People table<a class="anchor-link" href="#Add-records-to-the-People-table">&#182;</a></h2><ul>
+<li>Before we query the table, we'll add 2 records for Sprinkles and Sparkles.</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add records to the People table</span>
@@ -1240,10 +1247,10 @@ CREATE TABLE people (
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2024-03-25 07:49:19,526 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2024-03-25 07:49:19,528 INFO sqlalchemy.engine.Engine INSERT INTO people (id, name, role) VALUES (?, ?, ?)
-2024-03-25 07:49:19,529 INFO sqlalchemy.engine.Engine [generated in 0.00103s] [(1, &#39;Sprinkles&#39;, &#39;Test&#39;), (2, &#39;Sparkles&#39;, &#39;Test&#39;)]
-2024-03-25 07:49:19,530 INFO sqlalchemy.engine.Engine COMMIT
+<pre>2024-03-25 17:10:01,301 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-03-25 17:10:01,302 INFO sqlalchemy.engine.Engine INSERT INTO people (id, name, role) VALUES (?, ?, ?)
+2024-03-25 17:10:01,302 INFO sqlalchemy.engine.Engine [generated in 0.00036s] [(1, &#39;Sprinkles&#39;, &#39;Test&#39;), (2, &#39;Sparkles&#39;, &#39;Test&#39;)]
+2024-03-25 17:10:01,303 INFO sqlalchemy.engine.Engine COMMIT
 </pre>
 </div>
 </div>
@@ -1252,13 +1259,24 @@ CREATE TABLE people (
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-data-to-query-for">Create data to query for<a class="anchor-link" href="#Create-data-to-query-for">&#182;</a></h2><ul>
+<li>Now we create some data that we want to query for. This could be coming in from a user updating some information that the application needs to use to retrieve the correct record. </li>
+<li>This example is assuming that the incoming data will have keys that can map meaningfully to the model being used to handle interactions with the database. In this example, all the keys in the data dictionary are Column names in the People model. If the data were to have some additional keys that are not present in the People model, that's fine. It would be problematic to have keys that match model Columns accidentally, though.</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create some data to query for</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sparkles&quot;</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">}</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sparkles&quot;</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span> <span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
 </pre></div>
 
     </div>
@@ -1266,16 +1284,30 @@ CREATE TABLE people (
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dynamically-build-query-filters">Dynamically build query filters<a class="anchor-link" href="#Dynamically-build-query-filters">&#182;</a></h2><ul>
+<li>It's important the the incoming data to query for has keys that map to Columns in the data model in use.</li>
+<li>This approach allows the data model or incoming data request to use any keys and Columns as long as they are in sync with each other. That means one less thing to change in the code if the data model changes, etc.</li>
+<li>An approach to building a list of query filters that is often seen is something like:
+<pre><code>  data = {'id': 5, 'name': 'SKC'}
+  filters = [(People.id == data.get('id')), (People.name == data.get('name'))]
+  result = session.query(People).filters(*filters)</code></pre>
+  And that's a fine way to do it, but this approach is general to any combination of model and object with some keys that align with the model meaningfully enough to use to query.</li>
+</ul>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generic functionality that uses the incoming data to form sqlalchemy queries </span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">People</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">People</span>
 <span class="n">filters</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># Iterate over the dictionary and for each key, and </span>
-<span class="c1"># check whether the model has a column of the same name</span>
+<span class="c1"># Iterate over data and for each key and value </span>
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="c1"># Get the column from the model or None</span>
     <span class="n">column</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -1291,13 +1323,19 @@ CREATE TABLE people (
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Check-the-attributes-of-the-filters">Check the attributes of the filters<a class="anchor-link" href="#Check-the-attributes-of-the-filters">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the attributes of the filters</span>
-<span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -1310,34 +1348,34 @@ CREATE TABLE people (
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[61]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[{&#39;_orig&#39;: (282860879, 282860834),
-  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x10dc17e50; People&gt;}),
+<pre>[{&#39;_orig&#39;: (274218810, 275231898),
+  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x106730af0; People&gt;}),
   &#39;left&#39;: Column(&#39;id&#39;, Integer(), table=&lt;people&gt;, primary_key=True, nullable=False),
-  &#39;right&#39;: BindParameter(&#39;%(4525773344 id)s&#39;, 2, type_=Integer()),
+  &#39;right&#39;: BindParameter(&#39;%(4403710368 id)s&#39;, 2, type_=Integer()),
   &#39;operator&#39;: &lt;function _operator.eq(a, b, /)&gt;,
   &#39;type&#39;: Boolean(),
   &#39;negate&#39;: &lt;function _operator.ne(a, b, /)&gt;,
   &#39;_is_implicitly_boolean&#39;: True,
   &#39;modifiers&#39;: {}},
- {&#39;_orig&#39;: (282860891, 282860867),
-  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x10dc17e50; People&gt;}),
+ {&#39;_orig&#39;: (274218819, 275231772),
+  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x106730af0; People&gt;}),
   &#39;left&#39;: Column(&#39;name&#39;, String(), table=&lt;people&gt;, nullable=False),
-  &#39;right&#39;: BindParameter(&#39;%(4525773872 name)s&#39;, &#39;Sparkles&#39;, type_=String()),
+  &#39;right&#39;: BindParameter(&#39;%(4403708352 name)s&#39;, &#39;Sparkles&#39;, type_=String()),
   &#39;operator&#39;: &lt;function _operator.eq(a, b, /)&gt;,
   &#39;type&#39;: Boolean(),
   &#39;negate&#39;: &lt;function _operator.ne(a, b, /)&gt;,
   &#39;_is_implicitly_boolean&#39;: True,
   &#39;modifiers&#39;: {}},
- {&#39;_orig&#39;: (282859508, 282860981),
-  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x10dc17e50; People&gt;}),
+ {&#39;_orig&#39;: (274218813, 275231892),
+  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x106730af0; People&gt;}),
   &#39;left&#39;: Column(&#39;role&#39;, String(), table=&lt;people&gt;),
-  &#39;right&#39;: BindParameter(&#39;%(4525775696 role)s&#39;, &#39;Test&#39;, type_=String()),
+  &#39;right&#39;: BindParameter(&#39;%(4403710272 role)s&#39;, &#39;Test&#39;, type_=String()),
   &#39;operator&#39;: &lt;function _operator.eq(a, b, /)&gt;,
   &#39;type&#39;: Boolean(),
   &#39;negate&#39;: &lt;function _operator.ne(a, b, /)&gt;,
@@ -1351,13 +1389,19 @@ CREATE TABLE people (
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Query-using-the-filters-list-built-by-the-for-loop-above">Query using the filters list built by the for loop above<a class="anchor-link" href="#Query-using-the-filters-list-built-by-the-for-loop-above">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Query using the filters list built by the for loop</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">*</span><span class="n">filters</span><span class="p">)</span><span class="o">.</span><span class="n">one_or_none</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">*</span><span class="n">filters</span><span class="p">)</span><span class="o">.</span><span class="n">one_or_none</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -1374,11 +1418,11 @@ CREATE TABLE people (
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2024-03-25 07:49:19,551 INFO sqlalchemy.engine.Engine BEGIN (implicit)
-2024-03-25 07:49:19,552 INFO sqlalchemy.engine.Engine SELECT people.id AS people_id, people.name AS people_name, people.role AS people_role 
+<pre>2024-03-25 17:10:01,320 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-03-25 17:10:01,321 INFO sqlalchemy.engine.Engine SELECT people.id AS people_id, people.name AS people_name, people.role AS people_role 
 FROM people 
 WHERE people.id = ? AND people.name = ? AND people.role = ?
-2024-03-25 07:49:19,553 INFO sqlalchemy.engine.Engine [generated in 0.00053s] (2, &#39;Sparkles&#39;, &#39;Test&#39;)
+2024-03-25 17:10:01,322 INFO sqlalchemy.engine.Engine [generated in 0.00031s] (2, &#39;Sparkles&#39;, &#39;Test&#39;)
 </pre>
 </div>
 </div>
@@ -1387,13 +1431,19 @@ WHERE people.id = ? AND people.name = ? AND people.role = ?
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Check-that-it-returned-the-correct-record">Check that it returned the correct record<a class="anchor-link" href="#Check-that-it-returned-the-correct-record">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check that it returned the correct record</span>
-<span class="n">result</span><span class="o">.</span><span class="n">name</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
 
     </div>
@@ -1406,7 +1456,7 @@ WHERE people.id = ? AND people.name = ? AND people.role = ?
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[63]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -1421,13 +1471,19 @@ WHERE people.id = ? AND people.name = ? AND people.role = ?
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Clean-up:-remove-db-file">Clean up: remove db file<a class="anchor-link" href="#Clean-up:-remove-db-file">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Clean up: remove db file</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;temp_test.db&quot;</span><span class="p">)</span>
 
