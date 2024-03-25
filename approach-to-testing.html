@@ -4,8 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
-        <title>Dev Slush Pile - posts</title>
+        <title>An Approach to Python Testing</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="Practical testing practices" />
 </head>
 
 <body id="index" class="home">
@@ -15,10 +16,15 @@
                     <li class="active"><a href="/category/posts.html">posts</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/approach-to-testing.html" rel="bookmark"
+           title="Permalink to An Approach to Python Testing">An Approach to Python Testing</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/approach-to-testing.html">An Approach to Python Testing</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2024-03-25T00:00:00-04:00">
                 Published: Mon 25 March 2024
@@ -29,7 +35,7 @@
         </address>
 <p>In <a href="/category/posts.html">posts</a>.</p>
 <p>tags: <a href="/tag/testing.html">testing</a> </p>
-</footer><!-- /.post-info --><h1>TDD? Sort of and not really</h1>
+</footer><!-- /.post-info -->      <h1>TDD? Sort of and not really</h1>
 <p>I usually work in brand new code or in projects that are still very actively being developed, so it's normal for me to be in situations where we're figuring out exactly what to do and how to do it. I think of writing code as being similar (in some ways) to writing an article or a story: different people will naturally use different approaches to organize their work. </p>
 <p>What I mean by that is that some people are more inclined to outline and others are more inclined to discover their way through a project. Without additional context, I don't think either way is 'better'. I map strict TDD to an outlining approach and the way I tend to do things is closer to a discovery approach. Usually, I work out what I want to do and write a very simple first draft, then I start writing tests, and the tests show me some of the places I did things in a funky way, so I go back and clean those up so that I can test them (and so that my colleagues and I will be able to understand the code later).</p>
 <h2>Maximize coverage, minimize time</h2>
@@ -58,102 +64,11 @@
 <p>Additional documentation for how the code should be used.</p>
 <p>This is an easily overlooked function of testing. Tests should be as clear and easy to understand as code, because they will also need maintenance and they have a role in communicating about the code. If tutorials and READMEs explain the goals of the code and how to use it, the tests serve as another source of usage examples.</p>
 </li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</ul>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/python-resources.html" rel="bookmark"
-                           title="Permalink to Python Resources">Python Resources</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-04-03T00:00:00-04:00">
-                Published: Mon 03 April 2023
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/ac.html">AC</a>
-        </address>
-<p>In <a href="/category/posts.html">posts</a>.</p>
-<p>tags: <a href="/tag/resources.html">resources</a> </p>
-</footer><!-- /.post-info -->                <p>A collection of resources for working in Python</p>
-                <a class="readmore" href="/python-resources.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/debugging-thinking.html" rel="bookmark"
-                           title="Permalink to Thinking about debugging">Thinking about debugging</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-08-04T00:00:00-04:00">
-                Published: Thu 04 August 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/ac.html">AC</a>
-        </address>
-<p>In <a href="/category/posts.html">posts</a>.</p>
-<p>tags: <a href="/tag/debugging.html">debugging</a> <a href="/tag/techniques.html">techniques</a> </p>
-</footer><!-- /.post-info -->                <p>Ways to approach debugging</p>
-                <a class="readmore" href="/debugging-thinking.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/working-with-submodules.html" rel="bookmark"
-                           title="Permalink to Publishing posts to an output submodule">Publishing posts to an output submodule</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-07-26T00:00:00-04:00">
-                Published: Tue 26 July 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/ac.html">AC</a>
-        </address>
-<p>In <a href="/category/posts.html">posts</a>.</p>
-<p>tags: <a href="/tag/submodules.html">submodules</a> </p>
-</footer><!-- /.post-info -->                <p>Update a submodule</p>
-                <a class="readmore" href="/working-with-submodules.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/starting-a-blog.html" rel="bookmark"
-                           title="Permalink to Starting a blog">Starting a blog</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-07-17T00:00:00-04:00">
-                Published: Sun 17 July 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/ac.html">AC</a>
-        </address>
-<p>In <a href="/category/posts.html">posts</a>.</p>
-<p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/tutorials.html">tutorials</a> </p>
-</footer><!-- /.post-info -->                <p>Setting up a Pelican blog</p>
-                <a class="readmore" href="/starting-a-blog.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>

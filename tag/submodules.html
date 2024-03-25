@@ -12,7 +12,6 @@
         <header id="banner" class="body">
                 <h1><a href="/">Dev Slush Pile</a></h1>
                 <nav><ul>
-                    <li><a href="/category/notebooks.html">notebooks</a></li>
                     <li><a href="/category/posts.html">posts</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -35,20 +34,20 @@
 <p>In the superproject's <code>.git/hooks/pre-push</code></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;Starting pre-push&quot;</span>
-<span class="nv">lastcommit</span><span class="o">=</span><span class="sb">`</span>git log -1 --oneline<span class="sb">`</span>
-<span class="nb">echo</span> <span class="s2">&quot;Last commit: </span><span class="si">${</span><span class="nv">lastcommit</span><span class="si">}</span><span class="s2"> ... now running make publish&quot;</span>
-make publish
-<span class="nb">cd</span> output
-<span class="nb">echo</span> <span class="s2">&quot;In </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2"> with git status </span><span class="k">$(</span>git status<span class="k">)</span><span class="s2">&quot;</span>
-git add -A .
-git commit -m <span class="s2">&quot;</span><span class="si">${</span><span class="nv">lastcommit</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="nb">echo</span> <span class="s2">&quot;git status </span><span class="k">$(</span>git status<span class="k">)</span><span class="s2">&quot;</span>
-git push origin main
-<span class="nb">cd</span> ..
-<span class="nb">echo</span> <span class="s2">&quot;pwd: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
-git submodule update --remote --merge
-<span class="nb">exit</span> <span class="m">0</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting pre-push&quot;</span>
+<span class="nv">lastcommit</span><span class="o">=</span><span class="sb">`</span>git<span class="w"> </span>log<span class="w"> </span>-1<span class="w"> </span>--oneline<span class="sb">`</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Last commit: </span><span class="si">${</span><span class="nv">lastcommit</span><span class="si">}</span><span class="s2"> ... now running make publish&quot;</span>
+make<span class="w"> </span>publish
+<span class="nb">cd</span><span class="w"> </span>output
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;In </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2"> with git status </span><span class="k">$(</span>git<span class="w"> </span>status<span class="k">)</span><span class="s2">&quot;</span>
+git<span class="w"> </span>add<span class="w"> </span>-A<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">lastcommit</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;git status </span><span class="k">$(</span>git<span class="w"> </span>status<span class="k">)</span><span class="s2">&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+<span class="nb">cd</span><span class="w"> </span>..
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pwd: </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>
+git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote<span class="w"> </span>--merge
+<span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
 <ul>
@@ -74,10 +73,10 @@ git push origin main
 
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
 
-                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
 </body>

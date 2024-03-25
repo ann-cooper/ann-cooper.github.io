@@ -12,14 +12,66 @@
         <header id="banner" class="body">
                 <h1><a href="/">Dev Slush Pile</a></h1>
                 <nav><ul>
-                    <li><a href="/category/notebooks.html">notebooks</a></li>
                     <li><a href="/category/posts.html">posts</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/python-resources.html">Python Resources</a></h1>
+                    <h1 class="entry-title"><a href="/approach-to-testing.html">An Approach to Python Testing</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2024-03-25T00:00:00-04:00">
+                Published: Mon 25 March 2024
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/ac.html">AC</a>
+        </address>
+<p>In <a href="/category/posts.html">posts</a>.</p>
+<p>tags: <a href="/tag/testing.html">testing</a> </p>
+</footer><!-- /.post-info --><h1>TDD? Sort of and not really</h1>
+<p>I usually work in brand new code or in projects that are still very actively being developed, so it's normal for me to be in situations where we're figuring out exactly what to do and how to do it. I think of writing code as being similar (in some ways) to writing an article or a story: different people will naturally use different approaches to organize their work. </p>
+<p>What I mean by that is that some people are more inclined to outline and others are more inclined to discover their way through a project. Without additional context, I don't think either way is 'better'. I map strict TDD to an outlining approach and the way I tend to do things is closer to a discovery approach. Usually, I work out what I want to do and write a very simple first draft, then I start writing tests, and the tests show me some of the places I did things in a funky way, so I go back and clean those up so that I can test them (and so that my colleagues and I will be able to understand the code later).</p>
+<h2>Maximize coverage, minimize time</h2>
+<ul>
+<li>
+<p>Test that the major pieces work together first. I call this 'integration testing', but call it whatever makes sense for your team! The idea is to test the overall functionality of what you've built first, including the expected path through the code and any exceptions that are being handled.</p>
+</li>
+<li>
+<p>After that, add tests that exercise smaller portions of the code that weren't touched by the integration tests or that are particularly important.</p>
+</li>
+<li>
+<p>It's generally not useful to have a line of code tested multiple times unless it's particularly important. That said, if a line gets tested more than once in the course of writing a small number of tests that are minimally necessary to cover the code, that's fine.</p>
+</li>
+</ul>
+<h2>What's testing good for?</h2>
+<ul>
+<li>
+<p>Proof that the code works as expected.</p>
+</li>
+<li>
+<p>Supports extension and refactoring.</p>
+<p>There should be enough coverage that the code can be changed and the tests will still signal whether the change affected something out of scope. The tests should also be general enough that some changes to the code can be made and the tests will still run, which means that tests should mostly focus on the results of the code as opposed to details of the implementation. </p>
+<p>There might be small tests that focus on implementation if something is tricky or crucial, and those tests wouldn't be helpful in assessing refactoring or extension updates if the changes were to affect the lines they test. That doesn't mean those tests have no place, but it does mean that it's important to have some tests that cover that area without being closely coupled to implementation details.</p>
+</li>
+<li>
+<p>Additional documentation for how the code should be used.</p>
+<p>This is an easily overlooked function of testing. Tests should be as clear and easy to understand as code, because they will also need maintenance and they have a role in communicating about the code. If tutorials and READMEs explain the goals of the code and how to use it, the tests serve as another source of usage examples.</p>
+</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/python-resources.html" rel="bookmark"
+                           title="Permalink to Python Resources">Python Resources</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2023-04-03T00:00:00-04:00">
                 Published: Mon 03 April 2023
@@ -30,195 +82,10 @@
         </address>
 <p>In <a href="/category/posts.html">posts</a>.</p>
 <p>tags: <a href="/tag/resources.html">resources</a> </p>
-</footer><!-- /.post-info --><p>I first put together a Python resources page when I was leading a data engineering department, and this list is an updated and expanded take on that idea. It isn't meant to be comprehensive in any way, but I think it's a starting point for some of the major things that software and data engineers who work in Python need to know.</p>
-<h2>Books and blogs</h2>
-<h3>General</h3>
-<ul>
-<li><a href="https://diveintopython3.net/">Dive Into Python3</a></li>
-<li><a href="https://realpython.com/tutorials/basics/">Real Python</a></li>
-<li><a href="https://hynek.me/articles/">Hynek Schlawack</a></li>
-<li><a href="https://bigmachine.io/products/the-imposters-handbook/">The Impostor's Handbook</a></li>
-</ul>
-<h3>Topics</h3>
-<ul>
-<li><a href="https://www.oreilly.com/library/view/architecture-patterns-with/9781492052197/">Architecture Patterns with Python</a></li>
-<li><a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/">Designing Data-Intensive Applications</a></li>
-<li><a href="https://www.oreilly.com/library/view/foundations-for-architecting/9781492038733/">Foundations for Architecting Data Solutions</a></li>
-<li><a href="https://pythontest.com/pytest-book/">Python Testing with Pytest</a></li>
-</ul>
-<h2>Podcasts</h2>
-<ul>
-<li><a href="https://www.codingblocks.net/">Coding Blocks</a></li>
-<li><a href="https://www.dataengineeringpodcast.com/">Data Engineering Podcast</a></li>
-<li><a href="https://pythonbytes.fm/">Python Bytes</a></li>
-<li><a href="https://softwareengineeringdaily.com/">Software Engineering Daily</a></li>
-<li><a href="https://talkpython.fm/">Talk Python to Me</a></li>
-<li><a href="https://testandcode.com/">Test and Code</a></li>
-</ul>
-<h2>Idiomatic Python</h2>
-<ul>
-<li><a href="https://docs.python-guide.org/">The Hitchhiker's Guide to Python</a></li>
-<li><a href="https://realpython.com/tutorials/best-practices/">A collection of Python best practices posts from Real Python</a></li>
-</ul>
-<h2>Style</h2>
-<ul>
-<li><a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a></li>
-<li><a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a></li>
-<li><a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy">Docstrings styles</a></li>
-</ul>
-<h2>Data structures</h2>
-<ul>
-<li><a href="https://www.w3resource.com/python-exercises/data-structures-and-algorithms/python-data-structure.php">Exercises on data structures</a></li>
-<li><a href="https://docs.python.org/3/tutorial/datastructures.html">On data structures</a></li>
-</ul>
-<h2>Standard library essentials</h2>
-<ul>
-<li><a href="https://docs.python.org/3/library/collections.html">Collections</a></li>
-<li><a href="https://docs.python.org/3/library/itertools.html">Itertools</a></li>
-<li><a href="https://docs.python.org/3/reference/expressions.html#generator-expressions">generators</a></li>
-</ul>
-<h2>Debugging</h2>
-<ul>
-<li><a href="https://realpython.com/python-debugging-pdb/">pdb</a></li>
-<li><a href="https://ann-cooper.github.io/debugging-thinking.html">Blog post on debugging approaches</a></li>
-</ul>
-<h2>Object-oriented programming</h2>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=mUu_4k6a5-I">Fluent Python, PyCon 2019</a><ul>
-<li><a href="https://github.com/fluentpython/pyob2019">Repo for the talk</a></li>
-</ul>
-</li>
-<li><a href="https://realpython.com/python3-object-oriented-programming/">Intro to OOP in Python</a></li>
-<li><a href="https://medium.com/@dorela/s-o-l-i-d-principles-explained-in-python-with-examples-3332520b90ff">SOLID principles with Python examples</a></li>
-<li><a href="https://www.monterail.com/hubfs/PDF%20content/SOLID_cheatsheet.pdf">SOLID cheatsheet</a></li>
-</ul>
-<h2>Functional programming</h2>
-<ul>
-<li><a href="https://docs.python.org/3/howto/functional.html">Official docs on functional programming with Python</a></li>
-<li><a href="https://realpython.com/learning-paths/functional-programming/">Functional Programming learning path</a></li>
-</ul>
-<h2>Testing</h2>
-<ul>
-<li><a href="https://pybit.es/articles/pytest-tips/">Quick tips</a> from Pybites.</li>
-</ul>
-<h3>Test runners &amp; frameworks</h3>
-<ul>
-<li><a href="https://docs.pytest.org/en/stable/">Pytest, the Pytest runner can run tests written with unittest</a></li>
-</ul>
-<h3>Unit &amp; Integration testing</h3>
-<ul>
-<li><a href="https://realpython.com/pytest-python-testing/">Fixtures and parametrization</a></li>
-<li><a href="https://realpython.com/python-testing/">An introduction to testing with a discussion of unit and integration testing</a></li>
-</ul>
-<h3>Other testing approaches</h3>
-<h4>Pipeline testing</h4>
-<ul>
-<li><a href="https://greatexpectations.io/">Great Expectations</a></li>
-</ul>
-<h4>Property-based testing</h4>
-<ul>
-<li><a href="https://github.com/HypothesisWorks/hypothesis/tree/master/hypothesis-python">Hypothesis</a></li>
-</ul>
-<h2>Design patterns</h2>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=imW-trt0i9I">Pycon AU talk: You Don't Need that</a></li>
-<li><a href="https://python-patterns.guide/">Design Patterns with Python</a></li>
-</ul>
-<h2>Memory</h2>
-<ul>
-<li><a href="https://docs.python.org/3/c-api/memory.html">Official docs on memory management</a></li>
-<li><a href="https://pythonspeed.com/datascience/#memory">Itamar Turner-Trauring on Memory usage in Python</a></li>
-<li><a href="https://realpython.com/python-memory-management/">Real Python Memory Management article</a></li>
-</ul>
-<h3>Formatting and linting</h3>
-<ul>
-<li><a href="https://pypi.org/project/black/">Black for code formatting</a></li>
-<li><a href="https://flake8.pycqa.org/en/latest/">Flake8</a></li>
-</ul>
-<h2>Libraries and packaging</h2>
-<ul>
-<li><a href="https://packaging.python.org/en/latest/">PyPA guidance on packaging</a></li>
-<li><a href="https://pythonspeed.com/articles/distributing-software/">Distribution options</a></li>
-<li><a href="https://flit.pypa.io/en/stable/rationale.html">Flit</a></li>
-<li><a href="https://pederhan.github.io/python-packaging/tools/specialized/hatch/">Hatch</a></li>
-</ul>
-<h3>Project structure</h3>
-<ul>
-<li><a href="https://flask.palletsprojects.com/en/2.2.x/tutorial/layout/">Flask projects</a></li>
-<li><a href="https://www.cookiecutter.io/templates">Cookiecutter templates</a></li>
-</ul>
-<h3>Dependency management</h3>
-<ul>
-<li><a href="https://pip-tools.readthedocs.io/en/latest/index.html">pip-tools</a></li>
-<li><a href="https://www.caktusgroup.com/blog/2018/09/18/python-dependency-management-pip-tools/">Better Python Dependency Management with pip-tools</a></li>
-<li><a href="https://python-poetry.org/">Poetry</a></li>
-</ul>
-<h4>Reproducible development environments</h4>
-<ul>
-<li><a href="https://docs.python.org/3/tutorial/venv.html">Tutorial on virtual environments</a></li>
-<li><a href="https://docs.python.org/3/library/venv.html">Venv documentation</a></li>
-<li><a href="https://github.com/pyenv/pyenv">Pyenv</a><ul>
-<li><a href="https://realpython.com/intro-to-pyenv/">Pyenv tutorial</a></li>
-</ul>
-</li>
-</ul>
-<h2>Important packages and tools for data-focused engineers</h2>
-<h3>Exploring data</h3>
-<ul>
-<li><a href="https://pandas.pydata.org/">pandas</a></li>
-<li><a href="https://www.pola.rs/">polars</a></li>
-</ul>
-<h3>Profiling data</h3>
-<ul>
-<li><a href="https://github.com/ydataai/ydata-profiling">ydata-profiling (formerly pandas-profiling)</a></li>
-</ul>
-<h3>Visualizations</h3>
-<ul>
-<li><a href="https://seaborn.pydata.org/tutorial.html">Seaborn</a></li>
-<li><a href="https://plotly.com/python/">Plotly</a></li>
-<li><a href="https://datavizcatalogue.com/search.html">What kind of visualization fits the data?</a></li>
-</ul>
-<h2>Web APIs &amp; related</h2>
-<h3>Frameworks</h3>
-<ul>
-<li><a href="https://flask.palletsprojects.com/en/1.1.x/quickstart/">Flask</a><ul>
-<li><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">Flask Mega-Tutorial</a></li>
-<li><a href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/">flask-sqlalchemy</a></li>
-<li><a href="https://pytest-flask.readthedocs.io/en/latest/">pytest-flask</a></li>
-</ul>
-</li>
-<li><a href="https://fastapi.tiangolo.com/">FastAPI</a></li>
-</ul>
-<h3>Data Modeling</h3>
-<ul>
-<li><a href="https://docs.sqlalchemy.org/en/13/">Sqlalchemy</a></li>
-<li><a href="http://mongoengine.org/">MongoEngine</a></li>
-<li><a href="https://docs.python.org/3/library/dataclasses.html">Dataclasses</a></li>
-<li><a href="https://www.attrs.org/en/stable/examples.html">attrs</a></li>
-</ul>
-<h3>Serialization</h3>
-<ul>
-<li><a href="https://marshmallow.readthedocs.io/en/stable/">Marshmallow</a></li>
-<li><a href="https://catt.rs/en/latest/">cattrs</a></li>
-</ul>
-<h3>Validation</h3>
-<ul>
-<li><a href="https://pydantic-docs.helpmanual.io/">Pydantic</a></li>
-<li><a href="https://www.attrs.org/en/stable/examples.html">attrs</a></li>
-<li><a href="https://realpython.com/python-data-classes/">A guide to dataclasses</a></li>
-</ul>
-<h2>Learning plans</h2>
-<ul>
-<li><a href="https://realpython.com/learning-paths/">A collection of different learning plans by subject focus</a></li>
-<li><a href="https://www.dataquest.io/blog/python-projects-for-beginners/">Project ideas</a></li>
-<li><a href="https://app.codesignal.com/arcade">Code challenges</a></li>
-<li><a href="https://roadmap.sh/python">Roadmaps</a></li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>A collection of resources for working in Python</p>
+                <a class="readmore" href="/python-resources.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -299,10 +166,10 @@
 
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
 
-                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
 </body>
