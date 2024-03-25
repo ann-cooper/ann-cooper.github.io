@@ -1092,6 +1092,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
  .highlight pre  .gd { color: #A00000 } /* Generic.Deleted */
  .highlight pre  .ge { font-style: italic } /* Generic.Emph */
+ .highlight pre  .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
  .highlight pre  .gr { color: #E40000 } /* Generic.Error */
  .highlight pre  .gh { color: #000080; font-weight: bold } /* Generic.Heading */
  .highlight pre  .gi { color: #008400 } /* Generic.Inserted */
@@ -1148,10 +1149,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
  .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
  .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */</style><body><div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">declarative_base</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">create_engine</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
 
@@ -1159,7 +1160,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="c1"># Set up: Create session and People table with the People model.</span>
 <span class="k">class</span> <span class="nc">People</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Characters mentioned and their role in the puzzle.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Characters mentioned and their role in the puzzle.&quot;&quot;&quot;</span>
 
     <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;people&quot;</span>
 
@@ -1177,10 +1178,44 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2024-03-25 07:49:19,517 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-03-25 07:49:19,518 INFO sqlalchemy.engine.Engine PRAGMA main.table_info(&#34;people&#34;)
+2024-03-25 07:49:19,518 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-03-25 07:49:19,519 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info(&#34;people&#34;)
+2024-03-25 07:49:19,519 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-03-25 07:49:19,520 INFO sqlalchemy.engine.Engine 
+CREATE TABLE people (
+	id INTEGER NOT NULL, 
+	name VARCHAR NOT NULL, 
+	role VARCHAR, 
+	PRIMARY KEY (id), 
+	UNIQUE (name)
+)
+
+
+2024-03-25 07:49:19,520 INFO sqlalchemy.engine.Engine [no key 0.00030s] ()
+2024-03-25 07:49:19,521 INFO sqlalchemy.engine.Engine COMMIT
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add records to the People table</span>
@@ -1195,10 +1230,31 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2024-03-25 07:49:19,526 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-03-25 07:49:19,528 INFO sqlalchemy.engine.Engine INSERT INTO people (id, name, role) VALUES (?, ?, ?)
+2024-03-25 07:49:19,529 INFO sqlalchemy.engine.Engine [generated in 0.00103s] [(1, &#39;Sprinkles&#39;, &#39;Test&#39;), (2, &#39;Sparkles&#39;, &#39;Test&#39;)]
+2024-03-25 07:49:19,530 INFO sqlalchemy.engine.Engine COMMIT
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create some data to query for</span>
@@ -1212,17 +1268,19 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generic functionality that uses the incoming data to form sqlalchemy queries </span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">People</span>
 <span class="n">filters</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># Iterate over the dictionary and for each key, check if the model has a column of the same name</span>
+<span class="c1"># Iterate over the dictionary and for each key, and </span>
+<span class="c1"># check whether the model has a column of the same name</span>
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="c1"># Get the column from the model or None</span>
     <span class="n">column</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="c1"># If the model has a matching column and the value is truthy, then append the column == value statement to the query filters</span>
+    <span class="c1"># If the model has a matching column and the value is truthy, </span>
+    <span class="c1"># then append the column == value statement to the query filters</span>
     <span class="c1"># This will add 3 statements to the filters list, which will be joined with AND</span>
     <span class="k">if</span> <span class="n">column</span> <span class="ow">and</span> <span class="n">v</span><span class="p">:</span>
         <span class="n">filters</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">getattr</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="s2">&quot;__eq__&quot;</span><span class="p">)(</span><span class="n">v</span><span class="p">)))</span>
@@ -1235,7 +1293,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check the attributes of the filters</span>
@@ -1246,10 +1304,56 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[61]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;_orig&#39;: (282860879, 282860834),
+  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x10dc17e50; People&gt;}),
+  &#39;left&#39;: Column(&#39;id&#39;, Integer(), table=&lt;people&gt;, primary_key=True, nullable=False),
+  &#39;right&#39;: BindParameter(&#39;%(4525773344 id)s&#39;, 2, type_=Integer()),
+  &#39;operator&#39;: &lt;function _operator.eq(a, b, /)&gt;,
+  &#39;type&#39;: Boolean(),
+  &#39;negate&#39;: &lt;function _operator.ne(a, b, /)&gt;,
+  &#39;_is_implicitly_boolean&#39;: True,
+  &#39;modifiers&#39;: {}},
+ {&#39;_orig&#39;: (282860891, 282860867),
+  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x10dc17e50; People&gt;}),
+  &#39;left&#39;: Column(&#39;name&#39;, String(), table=&lt;people&gt;, nullable=False),
+  &#39;right&#39;: BindParameter(&#39;%(4525773872 name)s&#39;, &#39;Sparkles&#39;, type_=String()),
+  &#39;operator&#39;: &lt;function _operator.eq(a, b, /)&gt;,
+  &#39;type&#39;: Boolean(),
+  &#39;negate&#39;: &lt;function _operator.ne(a, b, /)&gt;,
+  &#39;_is_implicitly_boolean&#39;: True,
+  &#39;modifiers&#39;: {}},
+ {&#39;_orig&#39;: (282859508, 282860981),
+  &#39;_propagate_attrs&#39;: immutabledict({&#39;compile_state_plugin&#39;: &#39;orm&#39;, &#39;plugin_subject&#39;: &lt;Mapper at 0x10dc17e50; People&gt;}),
+  &#39;left&#39;: Column(&#39;role&#39;, String(), table=&lt;people&gt;),
+  &#39;right&#39;: BindParameter(&#39;%(4525775696 role)s&#39;, &#39;Test&#39;, type_=String()),
+  &#39;operator&#39;: &lt;function _operator.eq(a, b, /)&gt;,
+  &#39;type&#39;: Boolean(),
+  &#39;negate&#39;: &lt;function _operator.ne(a, b, /)&gt;,
+  &#39;_is_implicitly_boolean&#39;: True,
+  &#39;modifiers&#39;: {}}]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Query using the filters list built by the for loop</span>
@@ -1260,10 +1364,32 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2024-03-25 07:49:19,551 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-03-25 07:49:19,552 INFO sqlalchemy.engine.Engine SELECT people.id AS people_id, people.name AS people_name, people.role AS people_role 
+FROM people 
+WHERE people.id = ? AND people.name = ? AND people.role = ?
+2024-03-25 07:49:19,553 INFO sqlalchemy.engine.Engine [generated in 0.00053s] (2, &#39;Sparkles&#39;, &#39;Test&#39;)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check that it returned the correct record</span>
@@ -1274,10 +1400,30 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[63]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;Sparkles&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Clean up: remove db file</span>
